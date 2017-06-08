@@ -42,3 +42,9 @@ RUN apt-get update
 RUN apt-get install -o Dpkg::Options::=--force-confdef -y nginx
 RUN echo "\ndaemon off;" >> /etc/nginx/nginx.conf
 RUN chown -R www-data:www-data /var/lib/nginx
+
+# Add default nginx config
+ADD nginx-sites.conf /etc/nginx/sites-enabled/default
+
+# Install foreman
+RUN gem install foreman
