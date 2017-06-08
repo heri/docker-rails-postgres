@@ -12,7 +12,7 @@ Docker based on digitalocean config:
 
 ```
 # Dockerfile
-FROM heri/docker-rails-postgres:v1.1-ruby2.4.0-nginx1.8.1
+FROM heri/docker-rails-postgres:v1.1-ruby2.4.0-nginx1.9.15
 MAINTAINER heri(heri@studiozenkai.com)
 
 RUN apt-get update
