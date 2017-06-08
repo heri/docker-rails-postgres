@@ -6,6 +6,8 @@ Docker based on digitalocean config:
 
 # Usage
 
+* Install docker 
+
 * Create `Dockerfile` in project root :
 
 ```
