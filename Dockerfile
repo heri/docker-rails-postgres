@@ -39,7 +39,7 @@ RUN apt-get install -qq -y software-properties-common
 # Install Nginx.
 RUN add-apt-repository -y ppa:nginx/stable
 RUN apt-get update
-RUN apt-get install -qq -y nginx=1.9.15-0ubuntu1
+RUN apt-get install -o Dpkg::Options::=--force-confdef -y nginx
 RUN echo "\ndaemon off;" >> /etc/nginx/nginx.conf
 RUN chown -R www-data:www-data /var/lib/nginx
 # Add default nginx config
