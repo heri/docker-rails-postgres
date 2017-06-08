@@ -12,8 +12,27 @@ Docker based on digitalocean config:
 
 ```
 # Dockerfile
-FROM heri/docker-rails-postgres:v1.1-ruby2.4.0-nginx1.9.15
+FROM heri/docker-rails-postgres:v1.0-ruby2.4.0-nginx1.9.15
 MAINTAINER heri(heri@studiozenkai.com)
+
+# Add default nginx config
+ADD nginx-sites.conf /etc/nginx/sites-enabled/default
+
+# Install foreman
+RUN gem install foreman
+
+# Rails App directory
+WORKDIR /app
+
+# Add default unicorn config
+ADD unicorn.rb /app/config/unicorn.rb
+
+# Add default foreman config
+ADD Procfile /app/Procfile
+
+ENV RAILS_ENV production
+
+CMD bundle exec rake assets:precompile && foreman start -f Procfile
 
 RUN apt-get update
 RUN apt-get -qq -y install libmagickwand-dev imagemagick

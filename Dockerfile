@@ -42,21 +42,3 @@ RUN apt-get update
 RUN apt-get install -o Dpkg::Options::=--force-confdef -y nginx
 RUN echo "\ndaemon off;" >> /etc/nginx/nginx.conf
 RUN chown -R www-data:www-data /var/lib/nginx
-# Add default nginx config
-ADD nginx-sites.conf /etc/nginx/sites-enabled/default
-
-# Install foreman
-RUN gem install foreman
-
-# Rails App directory
-WORKDIR /app
-
-# Add default unicorn config
-ADD unicorn.rb /app/config/unicorn.rb
-
-# Add default foreman config
-ADD Procfile /app/Procfile
-
-ENV RAILS_ENV production
-
-CMD bundle exec rake assets:precompile && foreman start -f Procfile
