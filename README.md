@@ -1,14 +1,12 @@
 # Rails(+ Nginx, Unicorn) Dockerfile
 
-Docker based on digitalocean config
-
-## What's include
+Docker based on digitalocean config:
 
 * unicorn, nginx, foreman, imagemagick, postgres
 
 # Usage
 
-* Create `Dockerfile` in project root and paste below code.
+* Create `Dockerfile` in project root :
 
 ```
 # Dockerfile
@@ -64,8 +62,8 @@ ADD config/your-custom-nginx.conf /etc/nginx/sites-enabled/default
 
 ## Unicorn
 
-place your unicorn config to `config/unicorn.rb`
+place your unicorn config in `config/unicorn.rb`
 
 ## foreman
 
-place your Procfile to app root
+place your Procfile in app root
